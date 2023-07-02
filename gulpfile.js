@@ -74,3 +74,4 @@ exports.styles = styles
 exports.watch = watch
 exports.build = build
 exports.scripts = scripts
+exports.default = build
