@@ -3,8 +3,8 @@
 Данный сборщик сжимает файлы javascript и css
 
 ##Каталоги для размещения файлов стилей и скриптов
-    Стили ./src/styles/**/*.less
-    Скрипты ./src/scripts/**/*.js
+>Стили ./src/styles/**/*.less
+>Скрипты ./src/scripts/**/*.js
 
 ##Католог готовыых файлов
     Стили ./dist/css/main.min.css
