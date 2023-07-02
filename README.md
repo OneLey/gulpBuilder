@@ -25,6 +25,8 @@ Npm пакеты
 [gulp-concat](https://www.npmjs.com/package/gulp-concat) - объединение нескольких скриптов в один  
 [@babel/core](https://www.npmjs.com/package/@babel/core) - ядро нужное для корректной работы Babel  
 [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env) - пресет babel, нужное для корректной работы Babel  
+[gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) - показывает файлы несжатого типа в инструментах разработчика вместо сжатого css  
+[gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) - добавляет CSS стили для разных браузеров
 
 Автор
 ======
