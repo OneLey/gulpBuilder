@@ -1,17 +1,20 @@
-# Простой сборщик проекта Gulp  
+# Простой сборщик проекта Gulp
 
-Данный сборщик сжимает файлы javascript и css  
+Данный сборщик сжимает файлы javascript и css
 
-###Каталоги для размещения файлов стилей и скриптов  
+Каталоги для размещения файлов стилей и скриптов
+======
 
 >Стили ./src/styles/**/*.less
 >Скрипты ./src/scripts/**/*.js
 
-###Католог готовыых файлов
+Католог готовыых файлов
+======
     Стили ./dist/css/main.min.css
     Скрипты ./dist/js/main.min.js
 
-###Npm пакеты
+Npm пакеты
+======
 
 [gulp](https://gulpjs.com/) - сам сборщик  
 [gulp-less](https://www.npmjs.com/package/gulp-less) - компиляция less файлов  
@@ -23,6 +26,7 @@
 [@babel/core](https://www.npmjs.com/package/@babel/core) - ядро нужное для корректной работы Babel  
 [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env) - пресет babel, нужное для корректной работы Babel  
 
-###Автор
+Автор
+======
 
 Автором данного сборщика является [Ismail Useinov](https://github.com/morphIsmail)
