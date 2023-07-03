@@ -11,6 +11,10 @@ const autopref = require('gulp-autoprefixer')
 const imagemin = require('gulp-imagemin')
 const htmlmin = require('gulp-htmlmin')
 const size = require('gulp-size')
+const newer = require('gulp-newer')
+const sync = require('browser-sync').create()
+const sass = require('gulp-sass')(require('sass'))
+const ts = require('gulp-typescript')
 
 const paths = {
 	html: {
@@ -18,12 +22,12 @@ const paths = {
 		dest: './dist'
 	},
 	styles: {
-		src: './src/styles/**/*.less',
+		src: ['./src/styles/**/*.less', './src/styles/**/*.sass', './src/styles/**/*.scss'],
 		dest: './dist/css'
 	},
 	scripts: {
-		src: './src/scripts/**/*.js',
-		dest: './dist/js/'
+		src: ['./src/scripts/**/*.js', './src/scripts/**/*.ts'],
+		dest: './dist/js'
 	},
 	images: {
 		src: './src/img/*',
@@ -32,13 +36,14 @@ const paths = {
 }
 
 function clean() {
-	return del(['dist'])
+	return del(['./dist/*', '!./dist/img'])
 }
 
 function styles() {
 	return gulp.src(paths.styles.src)
 		.pipe(sourcemaps.init())
-		.pipe(less())
+		.pipe(sass().on('error', sass.logError))
+		//.pipe(less())
 		.pipe(autopref({
 			cascade: false
 		}))
@@ -50,10 +55,15 @@ function styles() {
 		.pipe(sourcemaps.write('.'))
 		.pipe(size({ showFiles: true}))
 		.pipe(gulp.dest(paths.styles.dest))
+		.pipe(sync.stream())
 }
 
 function scripts() {
 	return gulp.src(paths.scripts.src)
+		.pipe(ts ({
+			noImplicitAny: true,
+			outFile: 'main.min.js'
+		}))
 		.pipe(sourcemaps.init())
 		.pipe(babel({ presets: ['@babel/env'] }))
 		.pipe(uglify())
@@ -61,11 +71,13 @@ function scripts() {
 		.pipe(sourcemaps.write('.'))
 		.pipe(size({ showFiles: true}))
 		.pipe(gulp.dest(paths.scripts.dest))
+		.pipe(sync.stream())
 }
 
 function img() {
 	return gulp.src(paths.images.src)
-	.pipe(imagemin({progressive: true}))
+	.pipe(newer(paths.images.dest))
+	.pipe(imagemin({ progressive: true }))
 	.pipe(gulp.dest(paths.images.dest))
 	.pipe(size({ showFiles: true}))
 }
@@ -75,9 +87,17 @@ function minhtml() {
 		.pipe(htmlmin({ collapseWhitespace: true }))
 		.pipe(size({ showFiles: true}))
 		.pipe(gulp.dest(paths.html.dest))
+		.pipe(sync.stream())
 }
 
 function watch() {
+	sync.init({
+		server: {
+				baseDir: "./dist/"
+		}
+	})
+	gulp.watch(paths.html.src, minhtml)
+	gulp.watch(paths.html.dest, sync.reload)
 	gulp.watch(paths.styles.src, styles)
 	gulp.watch(paths.scripts.src, scripts)
 }
