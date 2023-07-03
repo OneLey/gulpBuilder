@@ -34,4 +34,4 @@ Npm пакеты
 Автор
 ======
 
-Автором данного сборщика является [Ismail Useinov](https://github.com/morphIsmail)
+Это сборку я делал для себя, по урокам от [Ismail Useinov](https://github.com/morphIsmail)
