@@ -26,7 +26,10 @@ Npm пакеты
 [@babel/core](https://www.npmjs.com/package/@babel/core) - ядро нужное для корректной работы Babel  
 [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env) - пресет babel, нужное для корректной работы Babel  
 [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) - показывает файлы несжатого типа в инструментах разработчика вместо сжатого css  
-[gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) - добавляет CSS стили для разных браузеров
+[gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) - добавляет CSS стили для разных браузеров  
+[gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin) - сжимает картинки  
+[gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin) - сжимает HTML файлы до 1 сроки  
+[gulp-size](https://www.npmjs.com/package/gulp-size) - показывает размер файлов
 
 Автор
 ======
